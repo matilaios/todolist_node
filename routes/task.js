@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const todolist = require('../todolist');
 
+
+
+//chercher les taches
+
 router.get('/', (req,res)=>{
 
     const getTask="SELECT*FROM task";
@@ -15,6 +19,20 @@ router.get('/', (req,res)=>{
 
 
 });
+
+
+//CHERCHER LES TACHES PAR ID
+
+router.get('/getTaskById/:id_task', (req, res)=>{
+    const {id_task}=req.params;
+    const getTaskById = 'select*from task WHERE id_task=?;';
+
+    todolist.query(getTaskById,[id_task], (error, result)=>{
+        if(error) throw error;
+        res.json(result);
+    })
+})
+
 
 //AJOUTER UNE TACHE
 
@@ -50,7 +68,7 @@ router.delete('/deletetask/:id_task', (req, res)=>{
 
 //MODIFIER TACHE
 
-router.post('/modifyTask/:id_task', (req,res)=>{
+router.patch('/modifyTask/:id_task', (req,res)=>{
 
     const {id_task}= req.params;
 

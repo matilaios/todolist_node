@@ -5,6 +5,8 @@ const todolist = require('../todolist');
 const jwt = require('jsonwebtoken');
 
 
+
+
 router.get('/user', (req,res)=> {
 
     const getUser = "SELECT*FROM user";
@@ -38,7 +40,7 @@ router.post('/addUser', (req, res)=>{
 
     
     const {nom_user, prenom_user, mail_user, password_user} =req.body;
-    // console.log(req.body);
+     console.log(req.body);
 
 
     const addUser = "INSERT INTO user (nom_user,prenom_user,mail_user,password_user) values (?,?,?,?);";
