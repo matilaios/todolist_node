@@ -3,10 +3,12 @@ const app = express();
 require('dotenv').config();
 const userRoute = require('./routes/user');
 const todolist = require('./todolist');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); //permet de traiter les données
+
+
 const taskRoute = require('./routes/task');
 
-const cors = require ('cors')
+const cors = require ('cors');
 
 
 app.use(express.json());
